@@ -17,13 +17,17 @@ public class TaskManager {
     }
 
     public String deleteTaskByIndex(int index) {
-        if (toDoList.get(index - 1) != null) {
-            toDoList.remove(index - 1);
+        try {
+            if (toDoList.get(index - 1) != null) {
+                toDoList.remove(index - 1);
 
-            return "Удалено!";
-        } else {
-            return "такого номера нет!";
+                return "Удалено!";
+            }
+        } catch (Exception e) {
+            System.out.println("Превысил границы " + e.getMessage());
         }
+
+        return "Такого номера нет!";
     }
 
     public String deleteTaskByName(String name) {
